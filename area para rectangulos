@@ -1,0 +1,8 @@
+#calcular el ara del rectangulo
+def calculadora_area_rectangulo(base, altura):
+    area = base * altura
+    return area
+base= 10
+altura = 5
+area= calculadora_area_rectangulo
+print("el area del rectamgulo es:{area} ")
