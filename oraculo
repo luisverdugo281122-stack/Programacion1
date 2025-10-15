@@ -1,0 +1,56 @@
+# El Oráculo de Python
+
+def calcular_elemento(año):
+    ultimo = año % 10
+    if ultimo == 0 or ultimo == 1:
+        elemento = "Metal"
+    elif ultimo == 2 or ultimo == 3:
+        elemento = "Agua"
+    elif ultimo == 4 or ultimo == 5:
+        elemento = "Madera"
+    elif ultimo == 6 or ultimo == 7:
+        elemento = "Fuego"
+    else:
+        elemento = "Tierra"
+    return elemento
+
+
+def generar_prediccion(nombre, elemento, numero):
+    if numero == 1:
+        mensaje = nombre + ", tu conexión con el elemento " + elemento + " te traerá gran sabiduría."
+    elif numero == 2:
+        mensaje = "Veo que el elemento " + elemento + " guía tu camino, " + nombre + ". ¡Atrévete a tomar ese riesgo!"
+    elif numero == 3:
+        mensaje = nombre + ", el poder del " + elemento + " está contigo. Prepárate para un cambio positivo."
+    elif numero == 4:
+        mensaje = "El destino te sonríe, " + nombre + ". Tu energía de " + elemento + " atraerá buenas oportunidades."
+    else:
+        mensaje = "Número inválido. Solo puede ser del 1 al 4."
+    return mensaje
+
+
+def iniciar_oraculo():
+    seguir = "si"
+    while seguir == "si":
+        print("Bienvenido al Oráculo de Python!")
+        nombre = input("Ingresa tu nombre: ")
+        año = int(input("Ingresa tu año de nacimiento: "))
+        numero = int(input("Elige tu número de la suerte (1-4): "))
+
+        # Calcular edad (usando 2025 fijo)
+        edad = 2025 - año
+
+        elemento = calcular_elemento(año)
+        prediccion = generar_prediccion(nombre, elemento, numero)
+
+        print("***************************************")
+        print("Hola", nombre + "!", "Tienes", edad, "años.")
+        print(prediccion)
+        print("***************************************")
+
+        seguir = input("¿Deseas otra predicción? (si/no): ")
+    print("Gracias por usar el Oráculo. Adiós!")
+
+
+# Iniciar el programa
+iniciar_oraculo()
