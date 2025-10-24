@@ -1,0 +1,113 @@
+# Programa ISW Academy
+# Hecho por [Tu nombre]
+
+cursos = []  # aquí se van a guardar los cursos
+
+def menu():
+    print("\n--- ISW Academy ---")
+    print("1. Agregar curso")
+    print("2. Eliminar curso")
+    print("3. Modificar curso")
+    print("4. Mostrar cursos")
+    print("5. Ver información de un curso")
+    print("6. Ver cuantos alumnos hay en un curso")
+    print("7. Salir")
+
+
+while True:
+    menu()
+    opcion = input("Elige una opción: ")
+
+    if opcion == "1":
+        nombre = input("Nombre del curso: ")
+        aula = input("Aula: ")
+        instructor = input("Instructor: ")
+        alumnos = input("Alumnos (separa por comas): ").split(",")
+
+        curso = {
+            "nombre": nombre,
+            "aula": aula,
+            "instructor": instructor,
+            "alumnos": [a.strip() for a in alumnos]
+        }
+
+        cursos.append(curso)
+        print("Curso agregado.")
+
+    elif opcion == "2":
+        nombre = input("Nombre del curso a eliminar: ")
+        encontrado = False
+        for c in cursos:
+            if c["nombre"] == nombre:
+                cursos.remove(c)
+                print("Curso eliminado.")
+                encontrado = True
+                break
+        if not encontrado:
+            print("Curso no encontrado.")
+
+    elif opcion == "3":
+        nombre = input("Nombre del curso a modificar: ")
+        for c in cursos:
+            if c["nombre"] == nombre:
+                print("1. Cambiar instructor")
+                print("2. Cambiar aula")
+                print("3. Agregar alumno")
+                print("4. Eliminar alumno")
+                op = input("Elige una opción: ")
+
+                if op == "1":
+                    nuevo = input("Nuevo instructor: ")
+                    c["instructor"] = nuevo
+                elif op == "2":
+                    nuevo = input("Nueva aula: ")
+                    c["aula"] = nuevo
+                elif op == "3":
+                    nuevo = input("Nombre del nuevo alumno: ")
+                    c["alumnos"].append(nuevo)
+                elif op == "4":
+                    borrar = input("Nombre del alumno a eliminar: ")
+                    if borrar in c["alumnos"]:
+                        c["alumnos"].remove(borrar)
+                        print("Alumno eliminado.")
+                    else:
+                        print("No está ese alumno.")
+                else:
+                    print("Opción no válida.")
+                break
+        else:
+            print("Curso no encontrado.")
+
+    elif opcion == "4":
+        if len(cursos) == 0:
+            print("No hay cursos.")
+        else:
+            for c in cursos:
+                print("Curso:", c["nombre"], "| Aula:", c["aula"], "| Instructor:", c["instructor"])
+
+    elif opcion == "5":
+        nombre = input("Nombre del curso: ")
+        for c in cursos:
+            if c["nombre"] == nombre:
+                print("Curso:", c["nombre"])
+                print("Aula:", c["aula"])
+                print("Instructor:", c["instructor"])
+                print("Alumnos:", ", ".join(c["alumnos"]))
+                break
+        else:
+            print("Curso no encontrado.")
+
+    elif opcion == "6":
+        nombre = input("Nombre del curso: ")
+        for c in cursos:
+            if c["nombre"] == nombre:
+                print("Número de alumnos:", len(c["alumnos"]))
+                break
+        else:
+            print("Curso no encontrado.")
+
+    elif opcion == "7":
+        print("Saliendo del programa...")
+        break
+    else:
+        print("Opción inválida, intenta otra vez.")
