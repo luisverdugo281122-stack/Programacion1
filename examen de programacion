@@ -1,0 +1,102 @@
+# Examen de Programación I - Simulación básica con validación en Python
+
+examen = [
+    [
+        "1. ¿Cuál de los siguientes componentes NO es parte fundamental de la arquitectura de Von Neumann?",
+        ["A) Tarjeta Gráfica", "B) Memoria principal", "C) Sistema de entrada/Salida", "D) CPU"],
+        0
+    ],
+    [
+        "2. El lenguaje máquina está compuesto por:",
+        ["A) Símbolos lógicos y matemáticos", "B) Pseudocódigo",
+         "C) Instrucciones en inglés abreviado", "D) Código binario"],
+        3
+    ],
+    [
+        "3. Un lenguaje de programación de alto nivel se caracteriza por:",
+        ["A) Ser el más rápido en tiempo de ejecución",
+         "B) Tener un control directo y preciso sobre el hardware",
+         "C) Ser independiente de la arquitectura de la computadora",
+         "D) Ser muy difícil de aprender y leer"],
+        2
+    ],
+    [
+        "4. ¿Qué es un algoritmo?",
+        ["A) Una secuencia de pasos finitos y bien definidos para resolver un problema",
+         "B) Un lenguaje de programación específico",
+         "C) El código fuente de un programa de computadora",
+         "D) Un conjunto de instrucciones escritas en código binario"],
+        0
+    ],
+    [
+        "5. En pseudocódigo, ¿qué estructura de control se utiliza para ejecutar un bloque de código solo si se cumple una condición específica?",
+        ["A) Repetitiva 'mientras'", "B) Repetitiva 'para'",
+         "C) Secuencial", "D) Condicional o de selección"],
+        3
+    ],
+    [
+        "6. El propósito principal del pseudocódigo es:",
+        ["A) Traducir automáticamente código de alto nivel a lenguaje máquina",
+         "B) Planificar y describir la lógica de un algoritmo de forma legible para los humanos",
+         "C) Ejecutar programas de forma más eficiente que un lenguaje compilado",
+         "D) Proporcionar un control directo sobre los registros del procesador"],
+        1
+    ],
+    [
+        "7. Un programa de computadora es esencialmente:",
+        ["A) Una colección de algoritmos",
+         "B) El sistema operativo de una computadora",
+         "C) Una secuencia de instrucciones que la computadora ejecuta",
+         "D) Una especificación del hardware"],
+        2
+    ],
+    [
+        "8. ¿Cuál es la diferencia principal entre un bucle 'mientras' (while) y un bucle 'repetir' (do-while)?",
+        ["A) 'Mientras' se ejecuta al menos una vez, 'repetir' puede no ejecutarse nunca",
+         "B) 'Mientras' se ejecuta mientras la condición sea falsa, 'repetir' mientras sea verdadera",
+         "C) 'Mientras' evalúa la condición antes de ejecutar el bloque, 'repetir' después",
+         "D) No existe ninguna diferencia"],
+        2
+    ],
+    [
+        "9. El lenguaje ensamblador es considerado un lenguaje de nivel...",
+        ["A) Medio", "B) Alto", "C) Bajo", "D) Muy alto"],
+        2
+    ],
+    [
+        "10. ¿Qué estructura de control es más adecuada para iterar sobre una secuencia de elementos un número de veces conocido de antemano?",
+        ["A) Bucle 'para'", "B) Sentencia condicional 'si'",
+         "C) Bucle 'repetir'", "D) Bucle 'mientras'"],
+        0
+    ]
+]
+
+print("Examen de Programación I")
+print("-------------------------")
+
+puntaje = 0
+
+for pregunta in examen:
+    print()
+    print(pregunta[0])
+    for opcion in pregunta[1]:
+        print(opcion)
+
+    # Validación: repetir hasta que la respuesta sea A, B, C o D
+    while True:
+        respuesta = input("Tu respuesta (A, B, C, D): ").upper()
+        if respuesta in ["A", "B", "C", "D"]:
+            break
+        else:
+            print("Respuesta no válida, escribe solo A, B, C o D.")
+
+    # Revisar si es correcta
+    if respuesta == chr(65 + pregunta[2]):  # chr(65) = 'A'
+        print("Correcto")
+        puntaje = puntaje + 1
+    else:
+        print("Incorrecto")
+
+print()
+print("Terminaste el examen")
+print("Tuviste", puntaje, "respuestas correctas de", len(examen))

@@ -1,0 +1,24 @@
+# Programa: cripto_monedas
+
+def cripto_monedas():
+    monto = float(input("Ingrese el monto disponible para invertir: "))
+    inversion = 0
+    contador = 0
+
+    while monto >= inversion:
+        inversion = float(input("¿Cuánto desea invertir?: "))
+
+        if monto >= inversion:
+            print("Usted ha realizado una compra.")
+            contador += 1
+            SD = monto - inversion
+            print("Su cantidad de compras fue:", contador)
+            print("Su saldo restante es:", SD)
+            monto = SD  # Actualiza el monto disponible
+        else:
+            print("Ingrese un monto menor o igual a", monto)
+
+    print("Fin del programa. No tiene suficiente saldo para continuar.")
+
+# Ejecutar el programa
+cripto_monedas()
